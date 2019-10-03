@@ -1,0 +1,19 @@
+.header-logo{
+    color:#fff;
+    font-size:36px;
+    float:left;
+    padding:30px 30px;
+    padding:20px 20px;
+  
+  }
+  .header-list li {
+    float:left;
+    padding :20px 20px;
+    padding:33px 33px;
+    color:#fff;
+    
+  }
+  .header {
+     background-color:#26d0c9;
+     height:90px;
+  }

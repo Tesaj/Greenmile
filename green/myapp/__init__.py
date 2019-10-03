@@ -50,7 +50,7 @@ admin.add_view(ModelView(User, db.session))
 
 
  
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/login', methods=['POST', 'GET'])
 def home():
     return render_template('index.html')
 
@@ -63,6 +63,9 @@ def admin():
 def dashboard():
     return render_template('dashboard.html')
 
+@app.route('/',methods=['POST','GET'])
+def adminhome():
+    return render_template('home.html')
 
 
 if __name__ == '__main__':
