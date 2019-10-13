@@ -1,10 +1,20 @@
+body {
+  background:url(../static/images/index.jpeg) no-repeat center center;
+  background-size:cover;
+}
+
+
 .header-logo{
     color:#fff;
     font-size:36px;
     float:left;
     padding:30px 30px;
     padding:20px 20px;
+    text-transform: uppercase;
   
+  }
+  .header-logo a span{
+    color: #dd356e;
   }
   .header-list li {
     float:left;
@@ -16,4 +26,24 @@
   .header {
      background-color:#26d0c9;
      height:90px;
+  }
+  .btn-cta a span {
+    background: #dd356e;
+    padding: 4px 10px;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    border-radius: 100px;
+  }
+  .btn-cta a:hover span {
+    -webkit-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
   }

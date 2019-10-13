@@ -4,11 +4,15 @@ from flask import request
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-
+from flask_login import LoginManager
+from flask_login import UserMixin
+from flask import Blueprint
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/green.db'
+app.config['SECRET_KEY']='girls and boys'
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -63,9 +67,31 @@ def admin():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/',methods=['POST','GET'])
-def adminhome():
+@app.route('/home',methods=['POST','GET'])
+def userhome():
     return render_template('home.html')
+
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is not None and user.verify_password(
+        form.password.data):
+
+            login_user(user)
+        if user.is_admin:
+            return redirect(url_for('127.0.0.1:5000/admin/'))    
+        else:
+            return redirect(url_for('http://127.0.0.1:5000/'))
+    else:
+        flash('Invalid username or password.')
+
+
 
 
 if __name__ == '__main__':
